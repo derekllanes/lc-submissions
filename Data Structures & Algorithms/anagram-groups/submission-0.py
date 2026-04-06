@@ -1,0 +1,17 @@
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        results = {}
+
+        for word in strs:
+            count = [0]*26
+
+            for let in word:
+                count[ord(let) - ord("a")] += 1
+
+            key = tuple(count)
+
+            if key not in results:
+                results[key] = []
+            results[key].append(word)
+
+        return list(results.values())
